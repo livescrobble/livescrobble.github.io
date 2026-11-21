@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Live Scrobble">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#312783"/>
+      <stop offset=".35" stop-color="#6E34AA"/>
+      <stop offset=".7" stop-color="#E6408C"/>
+      <stop offset="1" stop-color="#FF963C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="url(#g)"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="61.44" stroke-linecap="round">
+    <path d="M204.8 471.04 V552.96"/>
+    <path d="M307.2 409.6 V614.4"/>
+    <path d="M409.6 327.68 V696.32"/>
+    <path d="M512 256 V768"/>
+    <path d="M614.4 327.68 V696.32"/>
+    <path d="M716.8 409.6 V614.4"/>
+    <path d="M819.2 471.04 V552.96"/>
+  </g>
+</svg>

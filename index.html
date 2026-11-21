@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Scrobble</title>
+<meta name="description" content="An iPhone app that listens to the music around you, names it with Shazam, and scrobbles it to your Last.fm account.">
+<meta name="theme-color" content="#0B0A14">
+<link rel="icon" href="mark.svg">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:title" content="Live Scrobble">
+<meta property="og:description" content="Scrobble the music playing around you to Last.fm.">
+<meta property="og:image" content="https://livescrobble.app/img/icon-512.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500&family=Archivo:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <header class="top">
+      <img class="mark" src="mark.svg" alt="">
+      <div class="word">Live Scrobble</div>
+    </header>
+    <p class="lede">Scrobble the music playing around you.</p>
+    <p class="sub">Live Scrobble listens through your iPhone's microphone, names the song with Apple's ShazamKit, and adds it to your Last.fm profile. It works in a cafe, next to a radio, or at a gig.</p>
+    <p class="get"><span class="soon">Coming soon to the App Store</span></p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <section>
+      <p class="eyebrow">How it works</p>
+      <h2>Tap once, then put the phone away</h2>
+      <ul class="steps">
+        <li><span class="n">01</span><span><b>Log in to Last.fm</b>Enter your Last.fm username and password once. The app trades them for a session key and keeps that in the iOS Keychain.</span></li>
+        <li><span class="n">02</span><span><b>Tap to listen</b>The app listens through the microphone and asks Shazam what is playing. When it gets a match, the song shows as now playing on your Last.fm profile.</span></li>
+        <li><span class="n">03</span><span><b>Let the song play</b>Once the same song has been matched across at least 45 seconds, it is scrobbled. A quick snippet between tracks doesn't count.</span></li>
+        <li><span class="n">04</span><span><b>Lock the phone</b>Listening keeps going in the background. The current song and your count for the session sit in a Live Activity on the Lock Screen and in the Dynamic Island.</span></li>
+      </ul>
+
+      <figure class="mock">
+        <div class="lock" role="img" aria-label="An illustration of the Lock Screen. The Dynamic Island shows a red waveform and the number 3. Below the clock, the Live Activity shows a red waveform, Song title, Artist, Listening, and 3 scrobbled.">
+          <div class="island" aria-hidden="true"><span class="wave"><i></i><i></i><i></i><i></i><i></i></span><span>3</span></div>
+          <p class="clock" aria-hidden="true">9:41</p>
+          <div class="la" aria-hidden="true">
+            <span class="wave"><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="la-text"><span class="la-title">Song title</span><span class="la-sub">Artist · Listening</span></span>
+            <span class="la-count"><b>3</b><small>scrobbled</small></span>
+          </div>
+        </div>
+        <figcaption>An illustration, not a screenshot. The Live Activity shows the song, the artist, whether the app is listening or paused, and how many songs it has scrobbled this session.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="eyebrow">Two modes</p>
+      <h2>Recordings and live sets behave differently</h2>
+      <p>Pick a mode before you start. It stays fixed until you stop listening.</p>
+      <div class="modes">
+        <div class="card">
+          <h3>Cafe / Radio</h3>
+          <p>For recorded music playing nearby. Shazam matches the exact recording, so the app knows how far into the song it is and stamps the scrobble with when the song started.</p>
+        </div>
+        <div class="card">
+          <h3>Concert</h3>
+          <p>For live sets. Live versions match less often through crowd noise, so gaps of up to 5 minutes still count as one song. Type who's playing and only their songs scrobble, not the music between sets.</p>
+        </div>
+      </div>
+
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 360 250" role="img" aria-labelledby="dg-song-t dg-song-d">
+          <title id="dg-song-t">How one song becomes a scrobble</title>
+          <desc id="dg-song-d">A timeline with five matches for the same song. The first match sets it as now playing. The first match 45 seconds or more after that scrobbles it. Below, a table: in Cafe / Radio the time stamp is when the song started and a gap of up to 3 minutes still counts as the same play. In Concert the time stamp is when the song was first heard and the gap allowed is 5 minutes.</desc>
+          <text class="mono" x="20" y="16">ONE SONG, OVER TIME</text>
+          <rect class="span" x="60" y="72" width="150" height="16" rx="4"/>
+          <line class="hair" x1="20" y1="80" x2="340" y2="80"/>
+          <line class="gap" x1="210" y1="54" x2="210" y2="100" stroke-dasharray="3 3"/>
+          <text class="accent-t" x="135" y="62" text-anchor="middle">45 seconds</text>
+          <circle class="hit" cx="60" cy="80" r="5"/>
+          <circle class="hit" cx="115" cy="80" r="5"/>
+          <circle class="hit" cx="168" cy="80" r="5"/>
+          <circle class="hit" cx="240" cy="80" r="5"/>
+          <circle class="hit" cx="300" cy="80" r="5"/>
+          <text class="ink" x="60" y="118" text-anchor="middle">first match</text>
+          <text class="sm" x="60" y="134" text-anchor="middle">now playing</text>
+          <text class="ink" x="252" y="118" text-anchor="middle">a match past 45 s</text>
+          <text class="sm" x="252" y="134" text-anchor="middle">scrobbled</text>
+          <rect class="box" x="20" y="152" width="320" height="90" rx="10"/>
+          <text class="mono" x="208" y="174" text-anchor="middle">CAFE / RADIO</text>
+          <text class="mono" x="298" y="174" text-anchor="middle">CONCERT</text>
+          <line class="hair" x1="36" y1="184" x2="324" y2="184"/>
+          <text x="36" y="206">Time stamp</text>
+          <text class="ink" x="208" y="206" text-anchor="middle">song start</text>
+          <text class="ink" x="298" y="206" text-anchor="middle">first heard</text>
+          <text x="36" y="230">Gap allowed</text>
+          <text class="ink" x="208" y="230" text-anchor="middle">3 min</text>
+          <text class="ink" x="298" y="230" text-anchor="middle">5 min</text>
+        </svg>
+        <figcaption>Shazam can't tell how long you actually listened, so the app counts from the first match. If the same song is matched again within the gap, it is still the same play and is only scrobbled once.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="eyebrow">Offline</p>
+      <h2>No signal, no lost scrobbles</h2>
+      <p>If a scrobble can't be sent, because you're underground or Last.fm is down, it waits in a queue on the phone. The queue is saved to disk, so it survives the app closing. The app keeps retrying and sends everything once it gets through. The count of songs waiting shows next to your scrobble list.</p>
+    </section>
+
+    <section>
+      <p class="eyebrow">Your data</p>
+      <h2>Audio stays on the phone</h2>
+      <div class="card">
+        <p>The app never records or saves audio. ShazamKit turns the sound into a signature, a short fingerprint that can't be turned back into audio, and sends that to Apple's Shazam service for a match. Your Last.fm login and the songs you scrobble go to Last.fm, because that is what the app is for.</p>
+        <p>There are no analytics, no ads, and no tracking. The developer runs no servers and receives none of your data.</p>
+        <p><a href="privacy.html">Read the full privacy policy →</a></p>
+      </div>
+
+      <figure class="fig">
+        <svg class="dg" viewBox="0 0 360 372" role="img" aria-labelledby="dg-data-t dg-data-d">
+          <title id="dg-data-t">Where data goes</title>
+          <desc id="dg-data-d">On your iPhone, the microphone feeds ShazamKit, which makes a signature. The app sends the signature to Apple's Shazam service and gets back the artist and title. The app sends now playing and scrobbles to Last.fm. No audio is saved and there is no developer server.</desc>
+          <defs><marker id="ah-da" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0 0 L10 5 L0 10 z"/></marker></defs>
+          <rect class="zone" x="20" y="6" width="320" height="206" rx="14"/>
+          <text class="mono" x="36" y="28">YOUR IPHONE</text>
+          <rect class="box" x="36" y="40" width="288" height="40" rx="10"/>
+          <text class="disp ink" x="50" y="65">Microphone</text>
+          <text class="sm" x="150" y="65">while listening is on</text>
+          <path class="arrow" d="M180 82 V96" marker-end="url(#ah-da)"/>
+          <rect class="box" x="36" y="100" width="288" height="40" rx="10"/>
+          <text class="disp ink" x="50" y="125">ShazamKit</text>
+          <text class="sm" x="150" y="125">a signature, not audio</text>
+          <path class="arrow" d="M180 142 V156" marker-end="url(#ah-da)"/>
+          <rect class="box on" x="36" y="160" width="288" height="40" rx="10"/>
+          <text class="disp ink" x="50" y="185">The app</text>
+          <text class="sm" x="150" y="185">45 s rule, offline queue</text>
+          <path class="arrow" d="M97 204 V250" marker-start="url(#ah-da)" marker-end="url(#ah-da)"/>
+          <text class="sm" x="106" y="232">signature, match</text>
+          <path class="arrow" d="M263 204 V250" marker-end="url(#ah-da)"/>
+          <text class="sm" x="272" y="232">scrobbles</text>
+          <rect class="box" x="20" y="256" width="154" height="78" rx="10"/>
+          <text class="disp ink" x="34" y="280">Apple Shazam</text>
+          <text class="sm" x="34" y="300">Matches the signature,</text>
+          <text class="sm" x="34" y="316">sends artist and title</text>
+          <rect class="box" x="186" y="256" width="154" height="78" rx="10"/>
+          <text class="disp ink" x="200" y="280">Last.fm</text>
+          <text class="sm" x="200" y="300">Now playing and</text>
+          <text class="sm" x="200" y="316">scrobbles, your account</text>
+          <text class="mono" x="180" y="362" text-anchor="middle">NO AUDIO SAVED · NO DEVELOPER SERVER</text>
+        </svg>
+        <figcaption>Apple and Last.fm each handle what they receive under their own privacy policies. Nothing goes to the developer.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="eyebrow">Good to know</p>
+      <h2>Battery and the microphone</h2>
+      <p>To keep identifying music while the phone is locked, the app keeps the microphone on until you stop it. That uses more battery than a normal app. Stop listening when you leave.</p>
+      <p>If another app takes the microphone, for example during a call, listening pauses and the Live Activity says so.</p>
+    </section>
+
+    <section>
+      <p class="eyebrow">Support</p>
+      <h2>Something wrong, or something missing?</h2>
+      <p>Questions, bug reports, and songs that keep getting missed all go to the same place:</p>
+      <p><a href="mailto:support@livescrobble.app">support@livescrobble.app</a>. Write and I'll see it.</p>
+      <p class="get"><span class="soon">Coming soon to the App Store</span></p>
+      <p>Requires an iPhone running iOS 17 or later, and a free <a href="https://www.last.fm/join">Last.fm account</a>.</p>
+    </section>
+
+  </div>
+</main>
+
+<div class="wrap">
+  <footer>
+    <a href="privacy.html">Privacy</a>
+    <a href="mailto:support@livescrobble.app">Support</a>
+    <span>Live Scrobble</span>
+    <p class="note">Live Scrobble is an independent app. It is not affiliated with or endorsed by Last.fm or Shazam.</p>
+  </footer>
+</div>
+
+</body>
+</html>
